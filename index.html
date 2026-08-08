@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Coding M1 Demos</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #6b7280;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --border: #e5e7eb;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 72px 24px 40px;
+      background: linear-gradient(135deg, #eef2ff 0%, #f5f7fa 100%);
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    /* Main grid */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* CSS placeholder for the card whose live site is currently down */
+    .card-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #6d28d9 100%);
+      color: #fff;
+    }
+
+    .card-img-placeholder .timer-display {
+      display: flex;
+      gap: 10px;
+    }
+
+    .card-img-placeholder .time-unit {
+      text-align: center;
+    }
+
+    .card-img-placeholder .time-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .card-img-placeholder .time-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    .card-img-placeholder .placeholder-note {
+      font-size: 0.7rem;
+      opacity: 0.55;
+      margin-top: 4px;
+    }
+
+    .card-body {
+      padding: 22px 22px 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card-body .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: #eef2ff;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .card-body p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 20px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+      align-self: flex-start;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>我的 AI 编程起步作品集</h1>
+    <p>Vibe Coding M1 阶段 · 用自然语言驱动的零代码 / 低代码实践</p>
+  </header>
+
+  <main>
+    <div class="grid">
+      <!-- Card 1: 个人名片页 (Lovable) -->
+      <article class="card">
+        <img class="card-img" src="assets/demo-card-lovable.png" alt="个人名片页截图" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Lovable · 零代码</span>
+          <h2>个人名片页</h2>
+          <p>使用 Lovable 零代码生成的响应式名片，包含暗色模式切换。</p>
+          <a class="btn" href="https://interactive-card.lovable.app" target="_blank" rel="noopener noreferrer">View Demo →</a>
+        </div>
+      </article>
+
+      <!-- Card 2: 倒计时器 (美团 NoCode) -->
+      <article class="card">
+        <img class="card-img" src="assets/demo-countdown-nocode.png" alt="倒计时器截图" loading="lazy">
+        <div class="card-body">
+          <span class="tag">美团 NoCode · React</span>
+          <h2>倒计时器</h2>
+          <p>基于 React + 原生 JS，具备完善的内存泄漏防护机制。</p>
+          <a class="btn" href="https://h4ukgd.nocode.host" target="_blank" rel="noopener noreferrer">View Demo →</a>
+        </div>
+      </article>
+
+      <!-- Card 3: 倒计时器 (Lovable) -->
+      <article class="card">
+        <img class="card-img" src="assets/demo-countdown-lovable.png" alt="倒计时器截图" loading="lazy">
+        <div class="card-body">
+          <span class="tag">Lovable · 单文件应用</span>
+          <h2>倒计时器</h2>
+          <p>对比实验：Lovable 生成的单文件应用，视觉精美，逻辑直观。</p>
+          <a class="btn" href="https://simple-countdown-pro.lovable.app" target="_blank" rel="noopener noreferrer">View Demo →</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>Vibe Coding M1 · 2026</p>
+  </footer>
+</body>
+</html>
